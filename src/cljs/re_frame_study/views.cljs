@@ -11,7 +11,7 @@
       [:div.toggle-switch
        [:input {:type :checkbox
                 :checked @selected*
-                :on-change (fn [_] (swap! selected* not))
+                :on-change #(swap! selected* not)
                 :id id}]
        [:label {:for id} (str label ": " (if @selected* "Active" "Inactive"))]])))
 

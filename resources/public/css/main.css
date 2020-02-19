@@ -1,6 +1,10 @@
-
 body {
     font-family: sans-serif;
+    font-size: 16px;
+}
+
+* {
+    box-sizing: border-box;
 }
 
 .toggle-switch input {
@@ -9,42 +13,45 @@ body {
 }
 
 .toggle-switch {
+    --inactive-color: #666;
+    --active-color: #a628c5;
+    --border-size: 2px;
     margin-bottom: 10px;
+    color: #333
 }
 
 .toggle-switch input + label {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     position: relative;
 }
 
 .toggle-switch input + label::before {
     content: '';
-    border-radius: 15px;
-    width: 35px;
-    height: 20px;
-    border: 2px solid #666;
+    border-radius: 2em;
+    width: 2em;
+    height: 1.2em;
+    border: var(--border-size) solid var(--inactive-color);
     margin-right: 10px;
 }
 
 .toggle-switch input + label::after {
     content: '';
-    border-radius: 16px;
-    width: 16px;
-    height: 16px;
-    background-color: #666;
-    margin-right: 5px;
+    border-radius: 1em;
+    width: 1em;
+    height: 1em;
+    background-color: var(--inactive-color);
     position: absolute;
-    top: 4px;
-    left: 4px;
+    top: calc(0.1em + var(--border-size));
+    left: calc(0.1em + var(--border-size));
     transition: all ease 100ms;
 }
 
 .toggle-switch input:checked + label::before {
-    border-color: #a628c5;
+    border-color: var(--active-color);
 }
 
 .toggle-switch input:checked + label::after {
-    background-color: #a628c5;
-    left: calc(35px - 14px - 3px);
+    background-color: var(--active-color);
+    left: calc(1em + var(--border-size) - 0.1em);
 }
