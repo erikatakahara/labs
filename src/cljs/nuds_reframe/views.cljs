@@ -3,12 +3,18 @@
    [re-frame.core :as re-frame]
    [nuds-reframe.subs :as subs]
    ["@material-ui/core" :as mui]
-   ["@material-ui/icons" :as mui-icons]))
+   ["@material-ui/icons" :as mui-icons]
+   ["nu-sketch/lib/future" :as future]))
 
 (defn main-panel []
-  (let [name (re-frame/subscribe [::subs/name])]
+  (let [name (re-frame/subscribe [::subs/name])
+        four (future/sum 2 2)
+        three (future/autoSum)]
     [:div
      [:h1 "Hello from " @name]
+     [:ul "Importing function from local lib"
+      [:li three]
+      [:li four]]
      [:> mui/Button
       {:variant :contained
        :color   :primary}
